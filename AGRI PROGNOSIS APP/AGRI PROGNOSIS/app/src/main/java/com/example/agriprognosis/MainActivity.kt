@@ -25,10 +25,15 @@ class MainActivity : ComponentActivity()  {
         webView.settings.useWideViewPort = true
         webView.settings.domStorageEnabled = true  
 
-webView.setInitialScale(1)
+        // 🔥 VERY IMPORTANT
+        webView.clearCache(true)
+        webView.clearHistory()
+        webView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
+
+webView.setInitialScale(1)  
 
 
         // 🔥 IMPORTANT: Replace with your IP address
-        webView.loadUrl("https://agri-prognosis.onrender.com")   
+        webView.loadUrl("https://agri-prognosis.onrender.com/?v=5")   
     }
 }

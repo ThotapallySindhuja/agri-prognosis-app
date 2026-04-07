@@ -1,67 +1,68 @@
+/* 🌱 Overall body styling */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #56ab2f, #a8e063);
+    margin: 0;
+    padding: 0;
     text-align: center;
+    overflow-x: hidden;
 }
 
+/* 🌿 Main container (card) */
 .container {
     background: white;
-    padding: 30px;
-    margin: 50px auto;
-    width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px gray;
+    padding: 25px;
+    margin: 40px auto;
+    width: 95%;
+    max-width: 420px;   /* Perfect mobile width */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+/* 🌱 Titles */
+h1 {
+    margin-bottom: 10px;
+}
+
+h2 {
     margin-bottom: 20px;
 }
 
-input {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-}
-
-button {
-    padding: 10px 20px;
-    background: green;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button:hover {
-    background: darkgreen;
-}
-
-/* ✅ Make layout responsive */
-.container {
-    width: 90%;
-    max-width: 400px;
-    margin: auto;
-}
-
-/* ✅ Grid becomes single column in mobile */
+/* 🔥 FORM LAYOUT (Mobile First - Single Column) */
 .form-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
-/* ✅ Inputs full width */
+/* 🌿 Inputs and dropdown */
 input, select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
     width: 100%;
+    font-size: 16px;
     box-sizing: border-box;
 }
 
-/* ✅ Prevent horizontal scroll */
-body {
-    overflow-x: hidden;
+/* 🌿 Button */
+button {
+    margin-top: 15px;
+    padding: 12px;
+    width: 100%;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+/* 🌱 Result text */
+h3 {
+    margin-top: 20px;
 } 

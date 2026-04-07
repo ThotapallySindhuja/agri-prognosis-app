@@ -21,6 +21,12 @@ class MainActivity : ComponentActivity()  {
         webSettings.javaScriptEnabled = true 
 
         webView.webViewClient = WebViewClient()
+        webView.settings.loadWithOverviewMode = true
+        webView.settings.useWideViewPort = true
+        webView.settings.domStorageEnabled = true  
+
+webView.setInitialScale(1)
+
 
         // 🔥 IMPORTANT: Replace with your IP address
         webView.loadUrl("https://agri-prognosis.onrender.com")   

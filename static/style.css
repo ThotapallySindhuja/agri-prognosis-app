@@ -40,3 +40,28 @@ button {
 button:hover {
     background: darkgreen;
 }
+
+/* ✅ Make layout responsive */
+.container {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* ✅ Grid becomes single column in mobile */
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ✅ Inputs full width */
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ✅ Prevent horizontal scroll */
+body {
+    overflow-x: hidden;
+} 

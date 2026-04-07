@@ -23,6 +23,6 @@ class MainActivity : ComponentActivity()  {
         webView.webViewClient = WebViewClient()
 
         // 🔥 IMPORTANT: Replace with your IP address
-        webView.loadUrl("http://192.168.1.6:5000") 
+        webView.loadUrl("https://agri-prognosis.onrender.com")   
     }
 }

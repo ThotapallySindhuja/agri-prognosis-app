@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Agri Prognosis</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌱 Agri Prognosis</h1>
+
+<form action="/predict" method="post">
+
+<h2 id="title">Plant Health Prediction</h2>
+
+<select id="language" onchange="saveLanguage()" style="margin-bottom:15px;padding:8px; width:200px;"> 
+    <option value="en">English</option>
+    <option value="te">Telugu</option>
+    <option value="hi">Hindi</option>
+</select>
+
+<div class="form-grid"> 
+<input type="hidden" name="lang" id="langInput">
+<input type="number" step="any" name="n" placeholder="Nitrogen (N)" value="{{ n }}">
+<input type="number" step="any" name="p" placeholder="Phosphorus (P)" value="{{ p }}">
+
+<input type="number" step="any" name="k" placeholder="Potassium (K)" value="{{ k }}">
+<input type="number" step="any" name="ph" placeholder="pH Value" value="{{ ph }}">
+
+<input type="number" step="any" name="moisture" placeholder="Moisture" value="{{ moisture }}">
+
+<select name="plant" required>
+<option value="">Select Plant</option>
+<option value="0" {% if plant==0 %}selected{% endif %}>Brinjal</option>
+<option value="1" {% if plant==1 %}selected{% endif %}>Tomato</option>
+</select>
+
+</div>
+
+<button id="predictBtn">Predict</button>  
+
+</form>
+
+<!-- ✅ Added IDs here -->
+<h2 id="result">{{ health_result }}</h2>
+<h3 id="suggestion">{{ suggestion }}</h3>
+
+</div>
+
+<!-- ✅ JAVASCRIPT -->
+<script> 
+const translations = {
+    en: {
+        title: "Plant Health Prediction",
+        predict: "Predict",
+        healthy: "Plant Health: Healthy",
+        unhealthy: "Plant Health: Unhealthy",
+        good: "Soil conditions are good.",
+        bad: "Check soil nutrients and add fertilizer if required."
+    },
+    te: {
+        title: "మొక్క ఆరోగ్య అంచనా",
+        predict: "అంచనా వేయండి",
+        healthy: "మొక్క ఆరోగ్యం: ఆరోగ్యంగా ఉంది",
+        unhealthy: "మొక్క ఆరోగ్యం: బాగోలేదు",
+        good: "మట్టి పరిస్థితి బాగుంది",
+        bad: "మట్టి పోషకాలు తనిఖీ చేసి ఎరువులు వేయండి"
+    },
+    hi: {
+        title: "पौधे के स्वास्थ्य का पूर्वानुमान",
+        predict: "पूर्वानुमान करें",
+        healthy: "पौधे की स्थिति: स्वस्थ",
+        unhealthy: "पौधे की स्थिति: अस्वस्थ",
+        good: "मिट्टी की स्थिति अच्छी है",
+        bad: "उर्वरक डालें और सुधार करें"
+    }
+};
+
+// Save language
+function saveLanguage() {
+    const lang = document.getElementById("language").value;
+    localStorage.setItem("selectedLang", lang);
+    document.getElementById("langInput").value = lang;
+    changeLanguage();
+}
+
+// Apply language
+function changeLanguage() {
+    const lang = localStorage.getItem("selectedLang") || "en";
+
+    document.getElementById("language").value = lang;
+    document.getElementById("langInput").value = lang;
+
+    document.getElementById("title").innerText = translations[lang].title;
+    document.getElementById("predictBtn").innerText = translations[lang].predict;
+
+    let resultText = document.getElementById("result").innerText;
+
+    if(resultText.includes("Healthy")) {
+        document.getElementById("result").innerText = translations[lang].healthy;
+        document.getElementById("suggestion").innerText = translations[lang].good;
+    } 
+    else if(resultText.includes("Unhealthy")) {
+        document.getElementById("result").innerText = translations[lang].unhealthy;
+        document.getElementById("suggestion").innerText = translations[lang].bad;
+    }
+}
+
+// Run on load
+window.onload = changeLanguage;
+</script>
+
+</body>
+</html>

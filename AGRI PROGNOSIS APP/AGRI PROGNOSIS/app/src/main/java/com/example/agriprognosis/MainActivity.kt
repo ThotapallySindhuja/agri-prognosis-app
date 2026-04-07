@@ -34,6 +34,6 @@ webView.setInitialScale(1)
 
 
         // 🔥 IMPORTANT: Replace with your IP address
-        webView.loadUrl("https://agri-prognosis.onrender.com/?v=5")   
+        webView.loadUrl("https://agri-prognosis.onrender.com/?v=10")   
     }
 }
